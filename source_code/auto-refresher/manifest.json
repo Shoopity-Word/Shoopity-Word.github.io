@@ -1,16 +1,17 @@
 {
   "manifest_version": 3,
   "name": "D20 Auto Refresher",
-  "version": "1.8",
-  "permissions": ["storage"],
-  "storage": {
-    "managed_schema": "schema.json"
+  "version": "2.0.1",
+  "description": "Reloads the active tab after 10 minutes of device inactivity and continues refreshing every 10 minutes while the device remains idle",
+  "permissions": [
+    "idle",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
   },
-  "description": "Silently refreshes the current tab.",
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["refresh.js"]
-    }
-  ]
+  "action": {
+    "default_title": "D20 Auto Refresher",
+    "default_popup": "popup.html"
+  }
 }
