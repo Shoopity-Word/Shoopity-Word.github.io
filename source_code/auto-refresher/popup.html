@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>D20 Auto Refresher</title>
+
+  <style>
+    /*
+      The popup is extension-owned UI.
+
+      It does not run inside the webpage, so it does not require content
+      scripts, host permissions, or <all_urls>.
+    */
+
+    body {
+      font-family: system-ui, sans-serif;
+      width: 300px;
+      margin: 14px;
+    }
+
+    h1 {
+      font-size: 15px;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 7px 0;
+      font-size: 13px;
+    }
+
+    .value {
+      font-weight: 700;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 7px;
+    }
+
+    #status {
+      min-height: 18px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    These values are populated by popup.js.
+
+    popup.js asks background.js for the configured idle threshold and alarm
+    interval so those settings exist in only one place.
+  -->
+
+  <h1>D20 Auto Refresher</h1>
+
+  <p>
+    Idle threshold:
+    <span id="idleThreshold" class="value">checking...</span>
+  </p>
+
+  <p>
+    Repeat interval while idle:
+    <span id="repeatInterval" class="value">checking...</span>
+  </p>
+
+  <p>
+    Current device state:
+    <span id="idleState" class="value">checking...</span>
+  </p>
+
+  <p>
+    Repeat alarm:
+    <span id="alarmState" class="value">checking...</span>
+  </p>
+
+  <!--
+    This button is primarily useful for local testing and Chrome Web Store
+    review. It proves that the extension can reload the active tab immediately.
+  -->
+  <button id="reloadNow" type="button">
+    Reload active tab now
+  </button>
+
+  <p id="status"></p>
+
+  <!-- External JavaScript is required by Manifest V3 CSP rules. -->
+  <script src="popup.js"></script>
+</body>
+</html>
